@@ -1,0 +1,113 @@
+style.css
+/* RESET */
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+/* Fondo general */
+html, body {
+    height: 100%; /*toda la altura de la ventana*/
+    font-family: 'Segoe UI', Arial, sans-serif;
+    background: linear-gradient(135deg, #dfeee6 0%, #cfe6dc 100%);/*degradado suave*/
+    position: relative;/*para que no se mueva el contenido*/
+}
+/* Forma blanca suave crea un "halo en la parte superior derecha*/
+body::before {
+    content: "";
+    position: fixed;
+    top: -150%;
+    right: -150%;
+    width: 420%;
+    height: 420%;
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: 50%;
+    filter: blur(25px);
+    z-index: 0;/* todo se queda detras del contenido*/
+}
+/* Contenedor principal centrado tanto horizontal como verticalmente */
+.landing {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    position: relative;
+    z-index: 1; /*para que el contenido este por encima del fondo*/
+}
+/* Tarjeta central blanca que contiene el titulo la imganen el texto y el boton*/
+.card {
+    background-color: #ffffff;
+    border-radius: 20px;
+    padding: 35px 25px;
+    max-width: 420px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12); /* da profundidad y suavidad de bordes*/
+}
+/*Titulo tamaño color dentro de la tarjeta central*/
+.card h1 {
+    font-size: 1.9rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+    color:#1f1f1f;
+}
+/* Imagen responsiva no mayor de 300px con bordes redondeados*/
+.hero-image {
+    width: 100%;
+    max-width: 300px;
+    border-radius: 14px;
+    margin: 0 auto 20px auto;
+    display: block;
+}
+/* Texto estilo de parrafo dentro de la tarjeta central*/
+.hero-text {
+    font-size: 1.05rem;
+    line-height: 1.6;
+    color: #444;
+    margin-bottom: 28px;
+}
+/* Boton */
+.start-button {
+    display: inline-block;
+    background-color: #1f3d33;
+    color: #ffffff;
+    padding: 12px 30px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+.start-button:hover {
+    background-color: #2f5a4a;
+}
+#description-piel {
+    margin-top: 15px;
+    font-size: 1rem;
+    color: #333;
+}
+/* Responsive para pantallas grandes*/
+@media (min-width: 768px) {
+    .card {
+        padding: 45px 40px;
+    }
+    .card h1 {
+        font-size: 2.2rem;
+    }
+    .hero-text {
+        font-size: 1.1rem;
+    }
+}
+#resultado {
+    text-align: center;
+}
+#imagen-piel {
+    width: 300px;         /* ancho fijo */
+    height: 200px;        /* alto fijo */
+    object-fit: cover;    /* recorta la imagen si no encaja en el tamaño */
+    display: block;       /* necesario para que margin auto funcione */
+    margin: 20px auto;    /* centra horizontalmente */
+    border-radius: 12px;  /* opcional, bordes redondeados */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* opcional, un poco de sombra */
+}

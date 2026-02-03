@@ -1,0 +1,351 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cuestionario Ringana</title>
+<link rel="stylesheet" href="style.css">
+<style>
+    .question-title {
+        font-size: 1.6rem;
+        color: #1f3d33;
+        margin-bottom: 15px;
+    }
+    .question {
+        margin-top: 20px;
+        font-weight: 600;
+        color: #1f3d33;
+    }
+    .card h2 {
+        font-size: 1.6rem; 
+        margin-bottom: 20px;
+        color: #1f3d33; 
+    }   
+    .option {
+        display: block;
+        background-color: #f0f4f0;
+        border-radius: 14px;
+        padding: 12px 18px;
+        margin: 10px 0;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        font-weight: 500;
+        border: 2px solid transparent;
+    }
+    .option:hover {
+        background-color: #e0ebe2;
+    }
+    .option.selected {
+        background-color: #1f3d33;
+        color: #ffffff;
+        border: 2px solid #2f5a4a;
+        box-shadow: 0 4px 12px rgba(0,0,0,0.35);
+        transform: scale(1.03);
+    } 
+    textarea {
+        width: 100%;
+        min-height: 90px;
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 10px;
+        border: 1px solid #ccc;
+        font-family: inherit;
+        font-size:0.95rem;
+    }   
+    .quiz-buttons {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 30px;
+    }
+    .quiz-buttons button {
+        background-color: #1f3d33;
+        color: #ffffff;
+        padding: 12px 28px;
+        border-radius: 30px;
+        border: none;
+        font-weight: 600;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    .hidden{
+        display: none;
+    }
+</style>
+<script>
+    // CAMBIA ESTO POR LA URL DE MAKE
+    const WEBHOOK_URL = "https://hook.make.com/Pega tu webhook aqui";
+</script>
+</head>
+<body>
+<main class="landing">
+<section class="card">
+
+<!--Primer grupo de preguntas-->
+<div class="group active">
+    <h2 class="question-title">Hablemos de t&uacute; piel</h2>
+    <p class="question"> ¿Cu&aacute;ntos años tienes?</p>
+    <div class="option" data-points="0"> Menos de 25 años</div>
+    <div class="option" data-points="1"> Entre 25 y 35 años</div>
+    <div class="option" data-points="2"> Entre 36 y 45 años</div>
+    <div class="option" data-points="4"> Entre 46 y 55 años</div>
+    <div class="option" data-points="7"> Más de 55 años</div>
+
+    <p class="question">Tomo el sol o voy al solarium</p>
+    <div class="option" data-points="0"> Nunca</div>
+    <div class="option" data-points="1"> Ocasionalmente</div>
+    <div class="option" data-points="3"> Regularmente</div>
+    
+    <p class="question"> Trabajo en espacios cerrado</p>
+    <div class="option" data-points="1"> Si</div>
+    <div class="option" data-points="0"> No</div>
+</div>
+
+<!--Segundo grupo de preguntas-->
+<div class="group hidden">
+    <h2 class="question-title">Hablemos de t&uacute; piel</h2>
+    <p class="question">La sensaci&oacute; que prefiero en la superficie de mi piel es:</p>
+    <div class="option" data-points="0"> No notar la crema en la piel</div>
+    <div class="option" data-points="1"> Una crema r&aacute;pidamente absorbente que apenas se siente grasienta</div>
+    <div class="option" data-points="2"> Una pel&iacute;cula protectora que se siente</div>
+   
+    <p class="question">Tomo alcohol</p>
+    <div class="option" data-points="0"> Nunca</div>
+    <div class="option" data-points="1"> Ocasionalmente</div>
+    <div class="option" data-points="2"> Regularmente</div>
+
+    <p class="question"> Mi piel tiende a impurezas </p>
+    <div class="option" data-points="0"> Si</div>
+    <div class="option" data-points="2"> No</div>
+</div>
+
+<!--Tercer grupo de preguntas-->
+<div class="group hidden">
+    <h2 class="question-title">Hablemos de t&uacute; piel</h2>
+    <p class="question"> Mi piel tiende a formar arrugas</p>
+    <div class="option" data-points="3"> Si</div>
+    <div class="option" data-points="0"> No</div>
+
+    <p class="question"> Realizo cada semana deporte durante:</p>
+    <div class="option" data-points="2"> Menos de 30 minutos</div>
+    <div class="option" data-points="1"> Entre 30 y 60 minutos</div>
+    <div class="option" data-points="0"> M&aacute;s de 1 hora</div>
+
+    <p class="question"> Tengo...</p>
+    <div class="option" data-points="2">Peso normal</div>
+    <div class="option" data-points="0">Sobrepeso</div>
+    <div class="option" data-points="5">Bajo peso</div>
+</div>
+
+<!--Cuarto grupo de preguntas-->
+<div class="group hidden">
+    <h2 class="question-title">Hablemos de t&uacute; piel</h2>
+    <p class="question"> Vivo en la ciudad</p>
+    <div class="option" data-points="1"> Si</div>
+    <div class="option" data-points="0"> No</div>
+
+    <p class="question"> Paso cada dia  varias horas en espacios climatizados</p>
+    <div class="option" data-points="1"> Si</div>
+    <div class="option" data-points="0"> No</div>
+
+    <p class="question"> Cuido mi alimentaci&oacute;n (verduras, fruta, pescado)</p>
+    <div class="option" data-points="0"> Si</div>
+    <div class="option" data-points="2"> No</div>
+    <div class="option" data-points="1"> A veces</div>
+</div>
+
+<!--Quinto grupo de preguntas-->
+<div class="group hidden">
+    <h2 class="question-title">Hablemos de t&uacute; piel</h2>
+    <p class="question"> Fumo...</p>
+    <div class="option" data-points="3"> M&aacute;s de 10 cigarrillos al d&iacute;a</div>
+    <div class="option" data-points="1"> Menos de 10 cigarrillos al d&iacute;a</div>
+    <div class="option" data-points="0"> No fumo</div>
+
+    <p class="question"> Mi piel tiene poros grandes</p>
+    <div class="option" data-points="0"> Si</div>
+    <div class="option" data-points="2"> No</div>
+
+    <p class="question"> Mi piel tiende a enrojecerse y se irrita f&aacute;cilmente</p>
+    <div class="option" data-points="0"> Si</div>
+    <div class="option" data-points="2"> No</div>
+</div>
+
+<!--Bloque de preguntas abiertas-->
+<div class="group hidden">
+    <h2 class="question-title">Cu&eacute;ntanos un poco m&aacute;s</h2>
+
+    <p class="question">¿Tienes alguna alergia o intolerancia conocida?</p>
+    <textarea id="alergias" placeholder="Escribe tu respuesta aqu&iacute;"></textarea>
+
+    <p class="question">¿Cu&aacute;l es tu principal objetivo o preocupaci&oacute;n en el cuidado de la piel?</p>
+    <textarea id="objetivo" placeholder="Escribe tu respuesta aqu&iacute;"></textarea>
+</div>
+
+<!--Resultado-->
+<div id="resultado" class="hidden">
+    <h2 class="question-title" id="tipo-piel"></h2>
+    <img id="imagen-piel" src="" alt="Imagen tipo de piel" 
+         style="width: 300px; height: 200px; object-fit: cover; display: inline-block; 
+                margin: 20px auto; border-radius: 12px; box-shadow: 0 4px 10px rgba(0,0,0,0.2);">
+    <p id="descripcion-piel"></p>
+    <p id="descripcion-piel"></p>
+    <p class="hero-text">¡¡Gracias por regalarte este momento de escucha y cuidado!!</p>
+</div>
+
+<div class="quiz-buttons">
+    <button id="back-btn">Atr&aacute;</button>
+    <button id="next-btn">Siguiente</button>
+</div>
+
+</section>
+</main>
+
+<script>
+let currentGroup = 0;
+let totalPoints = 0;
+const groups = document.querySelectorAll('.group');
+const backBtn = document.getElementById('back-btn');
+const nextBtn = document.getElementById('next-btn');
+
+// --- SELECCIÓN DE OPCIONES ROBUSTA ---
+document.querySelectorAll('.group').forEach(group => {
+    const questions = group.querySelectorAll('.question');
+
+    questions.forEach(question => {
+        // recoger todas las opciones hasta la siguiente pregunta o fin del grupo
+        const options = [];
+        let el = question.nextElementSibling;
+        while(el && !el.classList.contains('question')) {
+            if(el.classList.contains('option')) options.push(el);
+            el = el.nextElementSibling;
+        }
+
+        // asignar evento click a cada opción
+        options.forEach(option => {
+            option.addEventListener('click', () => {
+                // quitar seleccion de todas las opciones de esta pregunta
+                options.forEach(o => o.classList.remove('selected'));
+                // marcar la opción seleccionada
+                option.classList.add('selected');
+            });
+        });
+    });
+});
+
+// --- NAVEGACIÓN ENTRE GRUPOS ---
+function showGroup(index) {
+    groups.forEach(g => g.classList.add('hidden'));
+    groups[index].classList.remove('hidden');
+    backBtn.style.display = index === 0 ? 'none' : 'inline-block';
+}
+nextBtn.addEventListener('click', () => {
+    // verificar que todas las preguntas tengan una opción seleccionada (solo si hay opciones)
+    const questions = groups[currentGroup].querySelectorAll('.question');
+    let allSelected = true;
+
+    questions.forEach(q => {
+        let hasOption = false;
+        let selected = false;
+        let el = q.nextElementSibling;
+        while(el && !el.classList.contains('question')) {
+            if(el.classList.contains('option')) {
+                hasOption = true;
+                if(el.classList.contains('selected')) selected = true;
+            }
+            el = el.nextElementSibling;
+        }
+        // si hay opciones y ninguna está seleccionada → bloquea
+        if(hasOption && !selected) allSelected = false;
+    });
+
+    if(!allSelected) {
+        alert('Por favor selecciona una opción en todas las preguntas antes de continuar.');
+        return;
+    }
+
+    // sumar puntos del grupo actual
+    const selectedOptions = groups[currentGroup].querySelectorAll('.option.selected');
+    let groupPoints = 0;
+    selectedOptions.forEach(option => groupPoints += parseInt(option.dataset.points));
+    totalPoints += groupPoints;
+
+    if(currentGroup < groups.length - 1) {
+        currentGroup++;
+        showGroup(currentGroup);
+    } else {
+        mostrarResultado();
+    }
+});
+backBtn.addEventListener('click', () => {
+    if(currentGroup > 0) {
+        // restar puntos del grupo actual
+        const selectedOptions = groups[currentGroup].querySelectorAll('.option.selected');
+        selectedOptions.forEach(option => totalPoints -= parseInt(option.dataset.points));
+
+        currentGroup--;
+        showGroup(currentGroup);
+    }
+});
+
+// --- MOSTRAR RESULTADO CON DESCRIPCIÓN ---
+function mostrarResultado() {
+    groups.forEach(g => g.classList.add('hidden'));
+    document.getElementById('resultado').classList.remove('hidden');
+    document.querySelector('.quiz-buttons').style.display = 'none';
+
+    const tipoPiel = document.getElementById('tipo-piel');
+    const imagenPiel = document.getElementById('imagen-piel');
+    let descripcion = '';
+
+    if(totalPoints <= 10) {
+        tipoPiel.textContent = 'Tu tipo de piel es: Piel Grasa';
+        descripcion = 'Tu piel produce más sebo de lo normal, por lo que tiende a brillos y poros visibles. Se recomienda limpieza suave y productos equilibrantes.';
+        imagenPiel.src = 'imagenes/piel_grasa.jpg'; // Asegúrate de tener esta imagen en tu proyecto
+        imagenPiel.style.display = 'block';
+    } else if(totalPoints <= 20) {
+        tipoPiel.textContent = 'Tu tipo de piel es: Piel Normal/Mixta';
+        descripcion = 'Tu piel tiene zonas equilibradas y zonas más grasas o secas. Mantén una rutina de hidratación ligera y limpieza adecuada según la zona.';
+        imagenPiel.src = 'imagenes/piel_mixta.jpg'; // Asegúrate de tener esta imagen en tu proyecto
+        imagenPiel.style.display = 'block';
+    } else {
+        tipoPiel.textContent = 'Tu tipo de piel es: Piel Seca';
+        descripcion = 'Tu piel tiende a resecarse, puede sentirse tirante o escamosa. Se recomienda hidratación intensa y protección frente a factores externos.';
+        imagenPiel.src = 'imagenes/piel_seca.jpg'; // Asegúrate de tener esta imagen en tu proyecto
+        imagenPiel.style.display = 'block';
+    }
+        document.getElementById('descripcion-piel').textContent = descripcion;
+    //Enviar datos a Make
+    function enviarAMake(tipoPiel) {
+        const payload = {
+            tipo_piel: tipoPiel,
+            puntos_totales: totalPoints,
+            alergias: document.getElementById('alergias').value,
+            objetivo: document.getElementById('objetivo').value,
+            fecha: new Date().toISOString()
+        };
+        fetch(WEBHOOK_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        }).catch(err => console.error(err));
+
+        }
+    }
+
+    // crear o actualizar elemento de descripción
+    let descEl = document.getElementById('descripcion-piel');
+    if(!descEl) {
+        descEl = document.createElement('p');
+        descEl.id = 'descripcion-piel';
+        tipoPiel.insertAdjacentElement('afterend', descEl);
+    }
+    descEl.textContent = descripcion;
+// iniciar mostrando el primer grupo
+showGroup(currentGroup);
+</script>
+</body> 
+</html>

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datos del cliente</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Estilos específicos para el formulario de datos del cliente */
+        form label { /* Etiquetas de los campos del formulario */
+            display: block; /* Etiquetas en bloque */
+            margin-top: 15px;
+            font-weight: 600;
+        }
+        form input { /* Campos de entrada del formulario */
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            font-size: 1rem;
+        }
+        .submit-button {/* Botón de envío del formulario */
+            margin-top: 25px;
+            display: block; /* Botón en bloque */
+            
+        }
+    </style>
+</head>
+<body>
+    <main class="landing">
+        <section class="card">
+            <h1>Introduce tus datos</h1>
+            <p class="hero-text"> Los datos se trataran de forma confidencial y solo se utilizarán para personalizar tu diagnóstico de piel.</p>
+            <form id="datos-form">
+                <label for="nombre">Nombre y Apellidos:</label>
+                <input type="text" id="nombre" name="nombre" required>
+
+                <label for="telefono">N&uacute;mero de teléfono:</label>
+                <div style="display:flex; gap: 8px;">
+                <!--Selector de prefijo del pais-->
+                <select id="prefijo" name="prefijo" required style ="border-radius:8px; padding:10px; font-size:1rem;">
+                    <option value="+34">+34 España</option>
+                    <option value="+1">+1 Estados Unidos / Canadá</option>
+                    <option value="+52">+52 México</option>
+                    <option value="+44">+44 Reino Unido</option>
+                    <option value="+33">+33 Francia</option>
+                    <option value="+49">+49 Alemania</option>
+                    <option value="+39">+39 Italia</option>
+                    <option value="+55">+55 Brasil</option>
+                    <option value="+56">+56 Chile</option>
+                    <option value="+57">+57 Colombia</option>
+                    <option value="+54">+54 Argentina</option>
+                    <option value="+58">+58 Venezuela</option>
+                    <option value="+31">+31 Países Bajos</option>
+                    <option value="+61">+61 Australia</option>
+                    <option value="+81">+81 Japón</option>
+                    <option value="+82">+82 Corea del Sur</option>
+                    <option value="+86">+86 China</option>
+                    <option value="+91">+91 India</option>
+                    <option value="+90">+90 Turquía</option>
+                </select>
+                <input type="tel" id="telefono" name="telefono" placeholder="1234567890" required pattern="[0-9]{9}" maxlength="9"
+                style="flex:1; border-radius:8px; padding:10px; font-size:1rem;">
+                </div>
+
+                <label for="email">Correo Electr&oacute;nico:</label>
+                <input type="email" id="email" name="email" required>
+
+                <button type="submit" class="submit-button">Siguiente</button>
+            </form>
+        </section>
+    </main>
+    <script>
+    const form =document.getElementById('datos-form');// Obtener el formulario por su ID
+    form.addEventListener('submit', function(event) {
+        event.preventDefault(); // Prevenir el envío del formulario por defecto
+
+        // Obtener los valores de los campos del formulario
+        const datosCliente ={
+            nombre: form.nombre.value,
+            telefono: form.prefijo.value + form.telefono.value,
+            email: form.email.value
+        };
+        //Guardar en localStorage para usar en la siguiente pagina
+        localStorage.setItem('datosCliente', JSON.stringify(datosCliente));
+
+        //Redirigir a la pagina del cuestionario
+        window.location.href = 'explicacion.html';
+    });
+    </script>
+</body>
+</html>

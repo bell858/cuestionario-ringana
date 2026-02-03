@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Explicacion</title>
+    <link rel="stylesheet" href="style.css">
+    <script defer src="datos.js"></script>
+    <style>
+        /* Ajustes especiales para la explicacion*/
+        .card h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            color: #1f3d33;
+            text-align: center;
+        }
+        .hero-text {
+            font-size: 1.05rem;
+            line-height: 1.8;
+            color: #444;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        #siguiente-btn{
+            display: block;
+            margin: 0 auto;
+            background-color: #1f3d33;
+            color: #fff;
+            padding: 15px 35px;
+            font-size: 1.05rem;
+            border-radius: 30px; /* Bordes redondeados */
+            text-decoration: none;
+            font-weight: 600;/* Fuente más gruesa */
+            transition: all 0.3s ease;/* Transición suave */
+        }
+        #siguiente-btn:hover {/*cambia de color al pasar el raton*/
+            background-color: #2f5a4a;
+        }
+    </style>
+</head>
+<body>
+    <main class="landing">
+        <section class="card">
+            <h1> Test de tipo de piel </h1>
+            <p class="hero-text">
+                Cada piel es &uacute;nica y evoluciona con el tiempo. No todas necesitan lo mismo ni reaccionan igual ante los mismos cuidados.
+            </p>
+            <p class="hero-text">
+                Conocer tu piel es el primer paso para cuidarla de manera consciente, respetuosa y personalizada.
+            </p>
+            <p class="hero-text">
+                Al responder las siguientes preguntas podremos identificar qu&eacute; es lo que tu piel necesita y recomendarte los productos m&aacute;s adecuados para ti.
+            </p>
+            <p class="hero-text">
+                Tu bienestar empieza por ti. Escucha tu piel, siente cada cuidado, y acompáñala con amor.
+            </p>
+            <button id="siguiente-btn" class="start-button"> Iniciar test </button>
+
+            <script>
+                document.getElementById('siguiente-btn').addEventListener('click', function() {
+                    window.location.href = 'Cuestionario-ringana.html'; // Redirige a la página de preguntas
+                });
+            </script>     
+        </section>
+    </main>
+</body>
+</html>
