@@ -37,7 +37,7 @@
         background-color: #e0ebe2;
     }
     .option.selected {
-        background-color: #1f3d33;
+        background-color: #2ed3b7;
         color: #ffffff;
         border: 2px solid #2f5a4a;
         box-shadow: 0 4px 12px rgba(0,0,0,0.35);
@@ -59,7 +59,7 @@
         margin-top: 30px;
     }
     .quiz-buttons button {
-        background-color: #1f3d33;
+        background-color: #7223b3;
         color: #ffffff;
         padding: 12px 28px;
         border-radius: 30px;
@@ -307,7 +307,7 @@ function mostrarResultado() {
     } else if(totalPoints <= 20) {
         tipoPiel.textContent = 'Tu tipo de piel es: Piel Normal/Mixta';
         descripcion = 'Tu piel tiene zonas equilibradas y zonas más grasas o secas. Mantén una rutina de hidratación ligera y limpieza adecuada según la zona.';
-        imagenPiel.src = 'imagenes/piel_mixta.jpg'; // Asegúrate de tener esta imagen en tu proyecto
+        imagenPiel.src = 'imagenes/piel_mixta.png'; // Asegúrate de tener esta imagen en tu proyecto
         imagenPiel.style.display = 'block';
     } else {
         tipoPiel.textContent = 'Tu tipo de piel es: Piel Seca';
@@ -352,4 +352,5 @@ showGroup(currentGroup);
 </body> 
 
 </html>
+
 
