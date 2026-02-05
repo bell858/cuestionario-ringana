@@ -9,7 +9,7 @@ style.css
 html, body {
     height: 100%; /*toda la altura de la ventana*/
     font-family: 'Segoe UI', Arial, sans-serif;
-    background: linear-gradient(135deg, #dfeee6 0%, #cfe6dc 100%);/*degradado suave*/
+    background: #2ed3b7;/*degradado suave*/
     position: relative;/*para que no se mueva el contenido*/
 }
 /* Forma blanca suave crea un "halo en la parte superior derecha*/
@@ -70,7 +70,7 @@ body::before {
 /* Boton */
 .start-button {
     display: inline-block;
-    background-color: #1f3d33;
+    background-color: #7223b3;
     color: #ffffff;
     padding: 12px 30px;
     border-radius: 30px;
@@ -80,7 +80,7 @@ body::before {
     transition: all 0.3s ease;
 }
 .start-button:hover {
-    background-color: #2f5a4a;
+    background-color: #a76cce;
 }
 #description-piel {
     margin-top: 15px;
@@ -110,4 +110,5 @@ body::before {
     margin: 20px auto;    /* centra horizontalmente */
     border-radius: 12px;  /* opcional, bordes redondeados */
     box-shadow: 0 4px 10px rgba(0,0,0,0.2); /* opcional, un poco de sombra */
+
 }
