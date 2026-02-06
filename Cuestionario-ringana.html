@@ -315,6 +315,12 @@ function mostrarResultado() {
         imagenPiel.style.display = 'block';
     }
         document.getElementById('descripcion-piel').textContent = descripcion;
+    //Obtener datos del cliente desde LocalStorage
+     const datosCliente = JSON.parse(localStorage.getItem('datosCliente')) || {
+        nombre: 'Desconocido',
+        telefono: 'Desconocido',
+        email: 'Desconocido'    
+    };
     //Enviar datos a Make
     function enviarAMake(tipoPiel) {
         const payload = {
@@ -322,6 +328,9 @@ function mostrarResultado() {
             puntos_totales: totalPoints,
             alergias: document.getElementById('alergias').value,
             objetivo: document.getElementById('objetivo').value,
+            nombre: datosCliente.nombre,
+            telefono: datosCliente.telefono,
+            email: datosCliente.email,
             fecha: new Date().toISOString()
         };
         fetch(WEBHOOK_URL, {
@@ -353,6 +362,7 @@ showGroup(currentGroup);
 </body> 
 
 </html>
+
 
 
 
