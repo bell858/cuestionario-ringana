@@ -37,7 +37,7 @@
         background-color: #e0ebe2;
     }
     .option.selected {
-        background-color: #2ed3b7;
+        background-color: #2ED3B7;
         color: #ffffff;
         border: 2px solid #2f5a4a;
         box-shadow: 0 4px 12px rgba(0,0,0,0.35);
@@ -301,7 +301,7 @@ function mostrarResultado() {
     if(totalPoints <= 10) {
         tipoPiel.textContent = 'Tu tipo de piel es: Piel Grasa';
         descripcion = 'Tu piel produce más sebo de lo normal, por lo que tiende a brillos y poros visibles. Se recomienda limpieza suave y productos equilibrantes.';
-        imagenPiel.src = 'imagenes/piel_grasa1.jpg'; // Asegúrate de tener esta imagen en tu proyecto
+        imagenPiel.src = 'imagenes/piel_grasa.jpg'; // Asegúrate de tener esta imagen en tu proyecto
         imagenPiel.style.display = 'block';
     } else if(totalPoints <= 20) {
         tipoPiel.textContent = 'Tu tipo de piel es: Piel Normal/Mixta';
@@ -315,8 +315,9 @@ function mostrarResultado() {
         imagenPiel.style.display = 'block';
     }
         document.getElementById('descripcion-piel').textContent = descripcion;
-    //Obtener datos del cliente desde LocalStorage
-     const datosCliente = JSON.parse(localStorage.getItem('datosCliente')) || {
+        
+        // Obtener datos del cliente desde localStorage
+    const datosCliente = JSON.parse(localStorage.getItem('datosCliente')) || {
         nombre: 'Desconocido',
         telefono: 'Desconocido',
         email: 'Desconocido'    
@@ -340,11 +341,10 @@ function mostrarResultado() {
             },
             body: JSON.stringify(payload)
         }).catch(err => console.error(err));
+    }   
+// Llamar a la función para enviar los datos a Make
+enviarAMake(tipoPiel.textContent);
 
-        }
-    }
-    //llamar a Make
-    enviarAMake(tipoPiel.textContent);
     // crear o actualizar elemento de descripción
     let descEl = document.getElementById('descripcion-piel');
     if(!descEl) {
@@ -353,16 +353,16 @@ function mostrarResultado() {
         tipoPiel.insertAdjacentElement('afterend', descEl);
     }
     descEl.textContent = descripcion;
+    
     totalPoints = 0;   // Reinicia los puntos antes de empezar
     currentGroup = 0;  // Asegura que empiece desde el primer grupo
-    }
+}
+
 // iniciar mostrando el primer grupo
 showGroup(currentGroup);
 </script>
 </body> 
-
 </html>
-
 
 
 
